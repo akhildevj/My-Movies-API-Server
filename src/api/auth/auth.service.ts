@@ -6,15 +6,21 @@ import {
 import { concatMap, map, Observable } from 'rxjs';
 import { DatabaseService } from 'src/database/database.service';
 import { createUserQuery, findUserQuery } from './db-queries/auth-query';
-import { UserDto } from './dto/user.dto';
-import { SignupDto } from './dto/signup.dto';
-import { LoginDto } from './dto/login.dto';
+import { SuccessResponseDto } from 'src/shared/dto/success.dto';
+import {
+  LoginBodyDto,
+  SignupBodyDto,
+  SignupResponseDto,
+  UserDto,
+} from './dto/auth.dto';
 
 @Injectable()
 export class AuthService {
   constructor(private db: DatabaseService<any>) {}
 
-  login(body: LoginDto): Observable<UserDto | Record<null, null>> {
+  login(
+    body: LoginBodyDto,
+  ): Observable<SuccessResponseDto | Record<null, null>> {
     const { email } = body;
 
     // Find user by email
@@ -26,7 +32,9 @@ export class AuthService {
     );
   }
 
-  signup(body: SignupDto): Observable<UserDto | Record<null, null>> {
+  signup(
+    body: SignupBodyDto,
+  ): Observable<SignupResponseDto | Record<null, null>> {
     const { name, email } = body;
 
     // Checks user already exists
@@ -36,8 +44,8 @@ export class AuthService {
 
         // Creates new user
         return this.db.rawQuery(createUserQuery, [name, email], UserDto).pipe(
-          map(([user]) => {
-            return { success: true, message: 'Succesfully created user', user };
+          map(([data]) => {
+            return { success: true, message: 'Succesfully created user', data };
           }),
         );
       }),

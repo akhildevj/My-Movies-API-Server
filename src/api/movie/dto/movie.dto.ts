@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import { IsNotEmpty, IsNotIn, IsNumber, IsString } from 'class-validator';
-import { SuccessDto } from 'src/shared/dto/success.dto';
+import { SuccessResponseDto } from 'src/shared/dto/success.dto';
 
 export class MovieBodyDto {
   @ApiProperty()
@@ -29,7 +29,7 @@ export class MovieDto extends MovieBodyDto {
   id: number;
 }
 
-export class MovieResponseDto extends SuccessDto {
+export class MovieResponseDto extends SuccessResponseDto {
   @ApiProperty({ type: [MovieDto] })
   data: MovieDto[];
 }
