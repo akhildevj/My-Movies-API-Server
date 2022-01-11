@@ -2,6 +2,26 @@ export const MAX_JSON_REQUEST_SIZE = 10485760;
 
 export const FASTIFY_ERR_BODY_TOO_LARGE = 'FST_ERR_CTP_BODY_TOO_LARGE';
 
+export const ORDER_DESCENDING = 'desc';
+
+export const ELASTIC_MOVIE_FIELDS = [
+  'id',
+  'title',
+  'release_date',
+  'vote_average',
+  'poster_path',
+  'overview',
+];
+
+export const ELASTIC_MOVIE_COLUMNS = {
+  ID: 'id',
+  TITLE: 'title',
+  RELEASE_DATE: 'release_date',
+  VOTE_AVERAGE: 'vote_average',
+  POSTER_PATH: 'poster_path',
+  OVERVIEW: 'overview',
+};
+
 export const ERROR_CODES = {
   DEFAULT: {
     statusCode: 1000,

@@ -1,12 +1,6 @@
-export const findAllMoviesQuery = `
-    SELECT id, name, year, rating 
-    FROM movie
-    ORDER BY id DESC
-;`;
-
 export const addMovieQuery = `
-    INSERT INTO movie(name, year, rating) 
-    VALUES($1, $2, $3)
-    ON CONFLICT(name) DO NOTHING
+    INSERT INTO movies(title, overview, release_date, vote_average, poster_path) 
+    VALUES($1, $2, $3, $4, $5)
+    ON CONFLICT(title) DO NOTHING
     RETURNING *
 ;`;

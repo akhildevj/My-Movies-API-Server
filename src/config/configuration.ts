@@ -10,4 +10,10 @@ export default registerAs('config', () => ({
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
   },
+  elastic: {
+    host: process.env.ELASTIC_HOST,
+    username: process.env.ELASTIC_USERNAME,
+    password: process.env.ELASTIC_PASSWORD,
+    movieIndex: process.env.MOVIE_INDEX,
+  },
 }));
